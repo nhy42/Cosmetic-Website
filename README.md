@@ -1,3 +1,3 @@
 # Cosmetic Website
 
-Our comestic wesbite project!
+Our comestic website project!
