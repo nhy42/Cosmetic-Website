@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Beauty & Co - Reviews</title>
+        <meta charset="UTF-8">
+        <link rel = "stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel= "stylesheet" href="/css/main.css">
+        <script src="../js/script.js"></script>
+        
+    </head>
+    <body >
+    
+        <%- include ("./partials/topbar.ejs")%>
+       
+    <div class="avis_titre"><br>
+        <h1>Write a review !</h1><br>
+    </div>
+
+    <section class="page-avis">
+        <form id="avisForm" onsubmit="ajouterAvis(event)">
+
+            <fieldset>
+                <legend class="titre-informations">Products ordered</legend>
+                <input type="checkbox" id="dyed_powder" name="produits" value="dyed_powder">
+                <label for="dyed_powder">Dyed powder  </label>
+              
+                <input type="checkbox" id="lipstick" name="produits" value="lipstick">
+                <label for="lipstick"> Lipstick  </label>
+              
+                <input type="checkbox" id="eyebrow" name="produits" value="eyebrow">
+                <label for="eyebrow">Eyebrows  </label>
+              
+                <input type="checkbox" id="highlighter" name="produits" value="highlighter">
+                <label for="highlighter">Highlighter  </label>
+
+                <input type="checkbox" id="mascara" name="produits" value="mascara">
+                <label for="mascara">Mascara  </label>
+
+                <input type="checkbox" id="gloss" name="produits" value="gloss">
+                <label for="gloss">Gloss  </label>
+
+                <input type="checkbox" id="solar_cream" name="produits" value="solar_cream">
+                <label for="solar_cream">Solar Cream  </label>
+
+                <input type="checkbox" id="hand_cream" name="produits" value="hand_cream">
+                <label for="hand_cream">Hand Cream  </label>
+
+                <input type="checkbox" id="shave_gel" name="produits" value="shave_gel">
+                <label for="shave_gel">Shave Gel  </label>
+
+                <input type="checkbox" id="shampoo" name="produits" value="shampoo">
+                <label for="shampoo">Shampoo  </label>
+
+                <input type="checkbox" id="hair_conditioner" name="produits" value="hair_conditioner">
+                <label for="hair_conditioner">Hair conditioner  </label>
+
+                <input type="checkbox" id="peel_of_mask" name="produits" value="peel_of_mask">
+                <label for="peel_of_mask">Peel-of mask  </label>
+
+
+                <br><br>
+              </fieldset>
+              
+            <fieldset>
+                <legend class ="titre-avis">Customer reviews</legend>
+                
+                <label for="date_commande">Date of order :</label>
+                <input type="date" id="date_commande" name="date_commande"><br><br>
+                
+                <label for="note_livraison">Rate from 1 to 5 :<br><br> Delivery :</label>
+                <input type="number" id="note_livraison" name="note_livraison" min="1" max="5"><br>
+                
+                <label for="note_qualite">Quality:</label>
+                <input type="number" id="note_qualite" name="note_qualite" min="1" max="5"><br>
+                  
+                <label for="note_service">Customer service:</label>
+                <input type="number" id="note_service" name="note_service" min="1" max="5"><br>
+                  
+                <label for="note_rapidite">Speed :</label>
+                <input type="number" id="note_rapidite" name="note_rapidite" min="1" max="5"><br><br>
+                  
+                <label for="commentaire">Comment :</label>
+                <input type="text" id="commentaire" name="commentaire"><br><br>
+                
+                <input type="submit" value="Add" class="btn-ajouter">
+
+            </fieldset>
+        
+        </form>
+        <br>
+        <main class="formulaire">
+          
+                <table id="tableau-id" class="tableau-avis">
+                    <thead>
+                        <tr>
+                            <th>Products ordered</th>
+                            <th>Date of order</th>
+                            <th>Delivery</th>
+                            <th>Quality</th>
+                            <th>Customer service</th>
+                            <th>Speed</th>
+                            <th>Comment</th>
+                        </tr>
+                    </thead>
+                  
+                </table>
+            
+        </main>
+
+    </section>
+    <%- include ("./partials/footer.ejs")%>
+</body>
+   
+</html>

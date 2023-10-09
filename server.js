@@ -14,8 +14,12 @@ app.get("/", (req, res) => {
     res.render(__dirname + "/private/template/home.ejs");
 });
 
-app.get("/products", (req, res) => {
-    res.render(__dirname + "/private/template/products.ejs");
+app.get("/products/woman", (req, res) => {
+    res.render(__dirname + "/private/template/products_W.ejs");
+});
+
+app.get("/products/man", (req, res) => {
+    res.render(__dirname + "/private/template/products_M.ejs");
 });
 
 app.get("/reviews", (req, res) => {
