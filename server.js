@@ -22,6 +22,15 @@ app.get("/products/man", (req, res) => {
     res.render(__dirname + "/private/template/products_M.ejs");
 });
 
+app.get("/products/man/1", (req, res) => {
+    res.render(__dirname + "/private/template/beauty_M.ejs");
+});
+
+app.get("/products/woman/1", (req, res) => {
+    res.render(__dirname + "/private/template/makeup_W.ejs");
+});
+
+
 app.get("/reviews", (req, res) => {
     res.render(__dirname + "/private/template/reviews.ejs");
 });
