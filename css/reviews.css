@@ -31,8 +31,6 @@
     border: 2px solid #af7245db;;
 }
 
-/* CSS pour les types de produits commandés et les avis des clients */
-
 .infosTitle {
     font-weight: bold;
     margin-bottom: 10px;
@@ -42,8 +40,6 @@
     font-weight: bold;
     margin-bottom: 10px;
 }
-
-/* CSS pour le tableau */
 
 .reviewTable {
     width: 100%;
@@ -56,23 +52,21 @@
     border: 1px solid #af7245db;;
 }
 
-/* CSS pour le formulaire */
-
 .reviewForm {
     margin-top: 20px;
 }
 
 fieldset {
-    border: none; /* Enlève les bordures des fieldsets */
-    padding: 0; /* Enlève le padding des fieldsets */
+    border: none;
+    padding: 0;
 }
 
 fieldset .infosTitle,
 fieldset .reviewTitle {
-    border: 2px solid #af7245db; /* Couleur d'encadrement pour les légendes */
+    border: 2px solid #af7245db;
     padding: 10px;
     border-radius: 5px;
-    background-color: #af7245db; /* Couleur à l'intérieur des encadrements */
+    background-color: #af7245db;
     color: #fff;
 }
 

@@ -44,6 +44,8 @@ body {
     height: calc(100% - 1vw);
 }
 
+/* Header */
+
 .header {
     padding: 1vw;
     display: flex;
@@ -126,10 +128,17 @@ body {
     font-size: 14px;
 }
 
+.dropdown-menu li {
+    list-style-type: none;
+}
+
 .dropdown-menu ul li:hover {
     background-color: #f0f0f0;
 }
 
+/* Header end */
+
+/* Footer */
 footer {
     margin-top: auto;
     background-color: white;
