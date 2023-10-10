@@ -30,7 +30,6 @@ app.get("/products/woman/1", (req, res) => {
     res.render(__dirname + "/private/template/makeup_W.ejs");
 });
 
-
 app.get("/reviews", (req, res) => {
     res.render(__dirname + "/private/template/reviews.ejs");
 });
