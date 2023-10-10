@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <title>Beauty & Co - Products</title>
-        <meta charset="UTF-8">
-        <link rel = "stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <link rel= "stylesheet" href="/css/main.css">
-    </head>
-    <body>
-        <%- include ("./partials/topbar.ejs")%>
-        <section class = 'achat'>
-            <div class = 'achat-liste'>
-                <img src="/img/Homme.jpg">
-                <div class ='achat-texte'>
-                   <strong>Solar cream</strong>
-                   <p>A solar creme SP30 sunscreen that offers UVA and UVB protection from the sun’s harmful rays, thanks to its chemical UV filters.
-                    This silky moisturizing formula contains an 8% hydrating trio of polyglutamic acid, glycerin and squalane. 
-                    It retains moisture for a smooth and vibrant finish. <br></p>
+<head>
+    <title>Beauty & Co - Products</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<%- include("./partials/topbar.ejs") %>
+<section class='achat'>
+    <div class='achat-liste'>
+        <img src="/img/Homme.jpg">
+        <div class='achat-texte'>
+            <strong>Solar cream</strong>
+            <p>A solar creme SP30 sunscreen that offers UVA and UVB protection from the sun’s harmful rays, thanks to
+                its chemical UV filters.
+                This silky moisturizing formula contains an 8% hydrating trio of polyglutamic acid, glycerin and
+                squalane.
+                It retains moisture for a smooth and vibrant finish. <br></p>
 
-                    
-                    <h3>For who ?</h3> <p>Suitable for all skin types and shades..</p>
-                    <span class ="prix"> 29.99 euros</span>
-                    <br>
-                    <div class ="quantité">
-                        <span>Quantity</span>
-                        <input type ="nombre" min="1" value="1">
-                    </div>
-                    <a href ="#" class ="panier">Add into your basket</a>
-                </div>
+
+            <h3>For who ?</h3>
+            <p>Suitable for all skin types and shades..</p>
+            <span class="prix"> 29.99 euros</span>
+            <br>
+            <div class="quantité">
+                <span>Quantity</span>
+                <input type="number" min="1" value="1">
             </div>
-
-
-            <%- include ("./partials/footer.ejs")%>
-    </body>
-
+            <a href="#" class="panier">Add into your basket</a>
+        </div>
+    </div>
+</section>
+<%- include("./partials/footer.ejs") %>
+</body>
 </html>
