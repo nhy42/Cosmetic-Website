@@ -1,0 +1,81 @@
+.reviewSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.globalReviewTitle {
+    color: white;
+    text-align: center;
+    margin-top: 0;
+}
+
+.reviewSection {
+    color: black;
+}
+
+.reviewSection form {
+    width: 40%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    border: 2px solid #af7245db;
+
+}
+
+.reviewSection main {
+    width: 55%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    border: 2px solid #af7245db;;
+}
+
+/* CSS pour les types de produits commandés et les avis des clients */
+
+.infosTitle {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.reviewTitle {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* CSS pour le tableau */
+
+.reviewTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.reviewTable th,
+.reviewTable td {
+    padding: 10px;
+    border: 1px solid #af7245db;;
+}
+
+/* CSS pour le formulaire */
+
+.reviewForm {
+    margin-top: 20px;
+}
+
+fieldset {
+    border: none; /* Enlève les bordures des fieldsets */
+    padding: 0; /* Enlève le padding des fieldsets */
+}
+
+fieldset .infosTitle,
+fieldset .reviewTitle {
+    border: 2px solid #af7245db; /* Couleur d'encadrement pour les légendes */
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #af7245db; /* Couleur à l'intérieur des encadrements */
+    color: #fff;
+}
+
+.reviewSubmit {
+    margin-top: 10px;
+}

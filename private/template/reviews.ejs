@@ -5,20 +5,19 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="css/reviews.css">
+    <link rel="stylesheet" href="/css/reviews.css">
 
 </head>
 <body>
 <%- include("./partials/topbar.ejs") %>
-<div class="avis_titre"><br>
+<div class="globalReviewTitle"><br>
     <h1>Write a review !</h1><br>
 </div>
 
-<section class="page-avis">
-    <form id="avisForm">
-
+<section class="reviewSection">
+    <form id="reviewForm">
         <fieldset>
-            <legend class="titre-informations">Products ordered</legend>
+            <legend class="infosTitle">Products ordered</legend>
             <input type="checkbox" id="dyed_powder" name="produits" value="dyed_powder">
             <label for="dyed_powder">Dyed powder </label>
 
@@ -60,35 +59,35 @@
         </fieldset>
 
         <fieldset>
-            <legend class="titre-avis">Customer reviews</legend>
+            <legend class="reviewTitle">Customer reviews</legend>
 
-            <label for="date_commande">Date of order :</label>
-            <input type="date" id="date_commande" name="date_commande"><br><br>
+            <label for="orderDate">Date of order :</label>
+            <input type="date" id="orderDate" name="orderDate"><br><br>
 
-            <label for="note_livraison">Rate from 1 to 5 :<br><br> Delivery :</label>
-            <input type="number" id="note_livraison" name="note_livraison" min="1" max="5"><br>
+            <label for="deliveryGrade">Rate from 1 to 5 :<br><br> Delivery :</label>
+            <input type="number" id="deliveryGrade" name="deliveryGrade" min="1" max="5"><br>
 
-            <label for="note_qualite">Quality:</label>
-            <input type="number" id="note_qualite" name="note_qualite" min="1" max="5"><br>
+            <label for="qualityGrade">Quality:</label>
+            <input type="number" id="qualityGrade" name="qualityGrade" min="1" max="5"><br>
 
-            <label for="note_service">Customer service:</label>
-            <input type="number" id="note_service" name="note_service" min="1" max="5"><br>
+            <label for="serviceGrade">Customer service:</label>
+            <input type="number" id="serviceGrade" name="serviceGrade" min="1" max="5"><br>
 
-            <label for="note_rapidite">Speed :</label>
-            <input type="number" id="note_rapidite" name="note_rapidite" min="1" max="5"><br><br>
+            <label for="speedGrade">Speed :</label>
+            <input type="number" id="speedGrade" name="speedGrade" min="1" max="5"><br><br>
 
-            <label for="commentaire">Comment :</label>
-            <input type="text" id="commentaire" name="commentaire"><br><br>
+            <label for="comment">Comment :</label>
+            <input type="text" id="comment" name="comment"><br><br>
 
-            <input type="submit" value="Add" class="btn-ajouter">
+            <input type="submit" value="Add" class="reviewSubmit">
 
         </fieldset>
 
     </form>
     <br>
-    <main class="formulaire">
+    <main class="reviewForm">
 
-        <table id="tableau-id" class="tableau-avis">
+        <table class="reviewTable">
             <thead>
             <tr>
                 <th>Products ordered</th>
