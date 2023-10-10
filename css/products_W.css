@@ -1,0 +1,36 @@
+.produit {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 15px;
+    max-width: 1200px;
+    width: 90%;
+    margin: 15px auto;
+}
+
+.produit img {
+    height: 20rem;
+}
+
+.produit-liste {
+    position: relative;
+    height: 210px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.produit-texte {
+    position: absolute;
+    transform: translate(-14%, -50%);
+    flex-direction: column;
+    align-items: flex-start;
+    top: 50%;
+    left: 14%;
+    display: flex;
+    justify-content: center;
+}
+
+.produit-texte a {
+    color: #a7304e;
+}
