@@ -1,0 +1,95 @@
+<div class="sqlTable">
+	<h2>Users</h2>
+	<ul>
+		<li>Id_users : <i>INT NOT NULL AUTO_INCREMENT</i></li>
+		<li>mail : <i>VARCHAR(50)</i></li>
+		<li>lastname : <i>VARCHAR(50)</i></li>
+		<li>firstname : <i>VARCHAR(50)</i></li>
+		<li>password : <i>VARCHAR(100)</i></li>
+		<li>gender : <i>INT</i></li>
+		<li>date_of_birth : <i>DATE</i></li>
+		<li>PRIMARY KEY(Id_users)</li>
+		<li>UNIQUE(mail)</li>
+	</ul>
+</div>
+
+<div class="sqlTable">
+	<h2>Website_Order</h2>
+	<ul>
+		<li>Id_Order : <i>INT NOT NULL AUTO_INCREMENT</i></li>
+		<li>date_order : <i>DATETIME</i></li>
+		<li>delivery_adress : <i>VARCHAR(100)</i></li>
+		<li>total_price : <i>DECIMAL(15,2)</i></li>
+		<li>rememember_card : <i>INT</i></li>
+		<li>PRIMARY KEY(Id_Order)</li>
+	</ul>
+</div>
+
+<div class="sqlTable">
+	<h2>Review</h2>
+	<ul>
+		<li>Id_review : <i>INT NOT NULL AUTO_INCREMENT</i></li>
+		<li>product_quality : <i>INT</i></li>
+		<li>delivery_quality : <i>INT</i></li>
+		<li>delivery_speed : <i>INT</i></li>
+		<li>customer_service : <i>INT</i></li>
+		<li>recommendation : <i>INT</i></li>
+		<li>Id_users : <i>INT NOT NULL</i></li>
+		<li>Id_Order : <i>INT NOT NULL</i></li>
+		<li>PRIMARY KEY(Id_review)</li>
+		<li>UNIQUE(Id_users)</li>
+		<li>UNIQUE(Id_Order)</li>
+		<li>FOREIGN KEY(Id_users) REFERENCES Users(Id_users)</li>
+		<li>FOREIGN KEY(Id_Order) REFERENCES Website_Order(Id_Order)</li>
+	</ul>
+</div>
+
+<div class="sqlTable">
+	<h2>Category</h2>
+	<ul>
+		<li>Id_category : <i>INT NOT NULL AUTO_INCREMENT</i></li>
+		<li>category_name : <i>VARCHAR(50)</i></li>
+		<li>PRIMARY KEY(Id_category)</li>
+	</ul>
+</div>
+
+<div class="sqlTable">
+	<h2>Products</h2>
+	<ul>
+		<li>Id_Products : <i>INT NOT NULL AUTO_INCREMENT</i></li>
+		<li>name_product : <i>VARCHAR(50)</i></li>
+		<li>product_price : <i>DECIMAL(15,2)</i></li>
+		<li>description : <i>VARCHAR(1000)</i></li>
+		<li>vegan : <i>INT</i></li>
+		<li>image : <i>VARCHAR(100)</i></li>
+		<li>Id_category : <i>INT NOT NULL</i></li>
+		<li>PRIMARY KEY(Id_Products)</li>
+		<li>FOREIGN KEY(Id_category) REFERENCES Category(Id_category)</li>
+	</ul>
+</div>
+
+<div class="sqlTable">
+	<h2>Buy</h2>
+	<ul>
+		<li>Id_users : <i>INT</i></li>
+		<li>Id_Products : <i>INT</i></li>
+		<li>Id_Order : <i>INT</i></li>
+		<li>quantity : <i>INT</i></li>
+		<li>PRIMARY KEY(Id_users, Id_Products, Id_Order)</li>
+		<li>FOREIGN KEY(Id_users) REFERENCES Users(Id_users)</li>
+		<li>FOREIGN KEY(Id_Products) REFERENCES Products(Id_Products)</li>
+		<li>FOREIGN KEY(Id_Order) REFERENCES Website_Order(Id_Order)</li>
+	</ul>
+</div>
+
+<div class="sqlTable">
+	<h2>Wish</h2>
+	<ul>
+		<li>Id_users : <i>INT</i></li>
+		<li>Id_Products : <i>INT</i></li>
+		<li>quantity : <i>INT</i></li>
+		<li>PRIMARY KEY(Id_users, Id_Products)</li>
+		<li>FOREIGN KEY(Id_users) REFERENCES Users(Id_users)</li>
+		<li>FOREIGN KEY(Id_Products) REFERENCES Products(Id_Products)</li>
+	</ul>
+</div>

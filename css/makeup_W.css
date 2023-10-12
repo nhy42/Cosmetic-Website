@@ -1,0 +1,57 @@
+.achat-liste{
+    position:relative;
+    height:500px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.achat-texte{
+    display: flex;
+    flex-direction: column;
+    padding: 0px 30px;
+    justify-content: flex-start;
+    font-size:1.2rem;
+    color: black;
+}
+
+.achat strong{
+    color: beige;
+    font-size: 1.8rem;
+}
+
+.achat-texte .prix{
+    color:black;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.achat-texte .quantité{
+    display: flex;
+    justify-self: flex-start;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.achat-texte .quantité input{
+    width:70px;
+    height:40px;
+    background-color: #f3f3f3;
+    text-align: center;
+    border: 1px solid #ebebeb;
+    border-radius:3px;
+
+}
+
+.achat-texte .panier{
+    width:100%;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: beige;
+    color: pink;
+    margin-top:20px ;
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Beauty & Co - Reviews</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/reviews.css">
+
+</head>
+<body>
+<%- include("./partials/topbar.ejs") %>
+<div class="globalReviewTitle"><br>
+    <h1>Write a review !</h1><br>
+</div>
+
+<section class="reviewSection">
+    <form id="reviewForm">
+        <fieldset>
+            <legend class="infosTitle">Products ordered</legend>
+            <input type="checkbox" id="dyed_powder" name="produits" value="dyed_powder">
+            <label for="dyed_powder">Dyed powder </label>
+
+            <input type="checkbox" id="lipstick" name="produits" value="lipstick">
+            <label for="lipstick"> Lipstick </label>
+
+            <input type="checkbox" id="eyebrow" name="produits" value="eyebrow">
+            <label for="eyebrow">Eyebrows </label>
+
+            <input type="checkbox" id="highlighter" name="produits" value="highlighter">
+            <label for="highlighter">Highlighter </label>
+
+            <input type="checkbox" id="mascara" name="produits" value="mascara">
+            <label for="mascara">Mascara </label>
+
+            <input type="checkbox" id="gloss" name="produits" value="gloss">
+            <label for="gloss">Gloss </label>
+
+            <input type="checkbox" id="solar_cream" name="produits" value="solar_cream">
+            <label for="solar_cream">Solar Cream </label>
+
+            <input type="checkbox" id="hand_cream" name="produits" value="hand_cream">
+            <label for="hand_cream">Hand Cream </label>
+
+            <input type="checkbox" id="shave_gel" name="produits" value="shave_gel">
+            <label for="shave_gel">Shave Gel </label>
+
+            <input type="checkbox" id="shampoo" name="produits" value="shampoo">
+            <label for="shampoo">Shampoo </label>
+
+            <input type="checkbox" id="hair_conditioner" name="produits" value="hair_conditioner">
+            <label for="hair_conditioner">Hair conditioner </label>
+
+            <input type="checkbox" id="peel_of_mask" name="produits" value="peel_of_mask">
+            <label for="peel_of_mask">Peel-of mask </label>
+
+
+            <br><br>
+        </fieldset>
+
+        <fieldset>
+            <legend class="reviewTitle">Customer reviews</legend>
+
+            <label for="orderDate">Date of order :</label>
+            <input type="date" id="orderDate" name="orderDate"><br><br>
+
+            <label for="deliveryGrade">Rate from 1 to 5 :<br><br> Delivery :</label>
+            <input type="number" id="deliveryGrade" name="deliveryGrade" min="1" max="5"><br>
+
+            <label for="qualityGrade">Quality:</label>
+            <input type="number" id="qualityGrade" name="qualityGrade" min="1" max="5"><br>
+
+            <label for="serviceGrade">Customer service:</label>
+            <input type="number" id="serviceGrade" name="serviceGrade" min="1" max="5"><br>
+
+            <label for="speedGrade">Speed :</label>
+            <input type="number" id="speedGrade" name="speedGrade" min="1" max="5"><br><br>
+
+            <label for="comment">Comment :</label>
+            <input type="text" id="comment" name="comment"><br><br>
+
+            <input type="submit" value="Add" class="reviewSubmit">
+
+        </fieldset>
+
+    </form>
+    <br>
+    <main class="reviewForm">
+
+        <table class="reviewTable">
+            <thead>
+            <tr>
+                <th>Products ordered</th>
+                <th>Date of order</th>
+                <th>Delivery</th>
+                <th>Quality</th>
+                <th>Customer service</th>
+                <th>Speed</th>
+                <th>Comment</th>
+            </tr>
+            </thead>
+
+        </table>
+
+    </main>
+</section>
+<%- include("./partials/footer.ejs") %>
+</body>
+</html>

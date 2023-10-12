@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Beauty & Co - Products</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/makeup_W.css">
+</head>
+<body>
+<%- include("./partials/topbar.ejs") %>
+<section class='achat'>
+    <div class='achat-liste'>
+        <img src="/img/makeup.jpg">
+        <div class='achat-texte'>
+            <strong>Dyed powder</strong>
+            <p>This sun powder warms, brightens the complexion and smoothes the skin texture. A light, soft and fine
+                texture that lets the skin breathe.<br>
+                Ideal for a good-looking effect and a naturally unified and radiant complexion..<br>
+            <p>
+
+                3 shades of luminous bronzing powders in a generous case to naturally extend its tan.</p><br>
+
+            <h3>The secret of this powder ?</h3>
+            <p>A formula enriched with 96% natural ingredients. The skin is protected from pollution.</p><br>
+
+            <h3>For who ?</h3>
+            <p>For all women, all skin tones. Suitable for all skin types.</p>
+            <span class="prix"> 35 euros</span>
+            <div class="quantité">
+                <span>Quantity</span>
+                <input type="number" min="1" value="1">
+            </div>
+            <a href="#" class="panier">Add into your basket</a>
+        </div>
+    </div>
+
+</section>
+<%- include("./partials/footer.ejs") %>
+</body>
+</html>
