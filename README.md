@@ -10,3 +10,15 @@ Team members : Paul ZANOLIN Léa Varing Noa COLIN
 Deadlines: 
 - 25 sept 2023 : description topic and diagram
 - 12 oct 2023 : fill the database and start the html / css 
+
+
+Sitemap: 
+
+/
+/products/woman
+/products/man
+/products/man/<int> : Describe the product having the ID <int>
+/products/woman/<int> : Describe the product having the ID <int>
+/reviews
+/contact
+/about
