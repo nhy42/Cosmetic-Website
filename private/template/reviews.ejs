@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/reviews.css">
+    <script src="/js/review.js"></script>
 
 </head>
 <body>
@@ -15,7 +16,7 @@
 </div>
 
 <section class="reviewSection">
-    <form id="reviewForm">
+    <form id="reviewForm" onsubmit="ajouterAvis(event)">
         <fieldset>
             <legend class="infosTitle">Products ordered</legend>
             <input type="checkbox" id="dyed_powder" name="produits" value="dyed_powder">
@@ -87,7 +88,7 @@
     <br>
     <main class="reviewForm">
 
-        <table class="reviewTable">
+        <table class="reviewTable" id="table_id">
             <thead>
             <tr>
                 <th>Products ordered</th>
