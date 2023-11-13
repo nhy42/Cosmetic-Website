@@ -1,10 +1,10 @@
-<header class ="header">
-    <a href="" class="logo"><img src ="/img/logo.jpg" alt=""></a>
-    <a href="" class="titre"><img src ="/img/titre.jpg" alt=""></a>
+<header class="header">
+    <a href="" class="logo"><img src="/img/logo.jpg" alt=""></a>
+    <a href="" class="titre"><img src="/img/titre.jpg" alt=""></a>
     <div>
-        <ul id="menu">
+        <ul id="menu" class="nav-menu">
             <li class="navitem">
-                <a class="navlink"  href="/">Home</a>
+                <a class="navlink" href="/">Home</a>
             </li>
             <li id="products-dropdown" class="navitem">
                 <a href="#" class="navlink">Our products</a>
@@ -18,6 +18,13 @@
             </li>
             <li class="navitem">
                 <a class="navlink" href="/contact">Contact</a>
+            </li>
+            <!-- Panier -->
+            <li class="navitem" id="cart-item">
+                <a class="navlink" href="/cart">
+                    <i class="fas fa-shopping-cart"></i> Cart
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
             </li>
         </ul>
     </div>

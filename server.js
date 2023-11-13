@@ -43,6 +43,9 @@ app.get("/about", (req, res) => {
     res.render(__dirname + "/private/template/about.ejs");
 });
 
+app.get("/cart", (req, res) => {
+    res.render(__dirname + "/private/template/cart.ejs");
+});
 
 // server start
 app.listen(process.env.WEB_PORT, () => {

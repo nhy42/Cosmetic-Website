@@ -1,6 +1,7 @@
 .produit {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
     grid-gap: 15px;
     max-width: 1200px;
     width: 90%;
@@ -8,29 +9,42 @@
 }
 
 .produit img {
-    height: 20rem;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.produit-liste:hover img {
+    opacity: 0.2; 
+    transition: opacity 0.3s; 
+    cursor: pointer;
 }
 
 .produit-liste {
     position: relative;
-    height: 210px;
     border-radius: 10px;
     overflow: hidden;
     display: flex;
     justify-content: flex-end;
+    align-items: flex-start;
+    height: auto; 
 }
 
 .produit-texte {
     position: absolute;
-    transform: translate(-14%, -50%);
-    flex-direction: column;
-    align-items: flex-start;
-    top: 50%;
-    left: 14%;
-    display: flex;
-    justify-content: center;
+    top: 0; 
+    right: 0; 
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+    color: black;
 }
 
-.produit-texte a {
-    color: #a7304e;
+.produit-texte strong {
+    display: block; 
 }
+
+.produit-texte span {
+    display: block; 
+}
+
