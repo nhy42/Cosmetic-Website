@@ -1,8 +1,9 @@
 const express = require("express");
-const mysql = require("mysql");  // for later use
+const dotenv = require('dotenv');
+dotenv.config();
 const cookieParser = require("cookie-parser");  // for later use
 const app = express();
-const port = 80;
+const pool = require("./utils/db.js");  // to init db
 
 app.set("view engine", "ejs")
 app.use(cookieParser());
@@ -44,6 +45,7 @@ app.get("/about", (req, res) => {
 
 
 // server start
-app.listen(port, () => {
-    console.log(`Cosmetic server started. Container port : ${port}`);
+app.listen(process.env.WEB_PORT, () => {
+    // todo: init db if first use
+    console.log(`Cosmetic server started. Container port : ${process.env.WEB_PORT}`);
 });
