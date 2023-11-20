@@ -43,5 +43,4 @@ app.listen(process.env.WEB_PORT, () => {
 });
 
 app.use("/", require("./private/controllers/user.route.js"));
-app.use("/products", require("./private/controllers/products.route.js"));
 app.use("/review", require("./private/controllers/review.route.js"));

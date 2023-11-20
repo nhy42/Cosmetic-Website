@@ -5,8 +5,11 @@ const reviewRepo = require('../../utils/review.repository');
 
 // /review
 
-router.get("/add", async (req, res) => {
-    let reviewStatus = await reviewRepo.addReview(req.query.product_id, req.query.account_id, req.query.rating, req.query.comment);
+// todo get requests
+
+router.post("/add", async (req, res) => {
+    let accID = 2; // todo decode jwt
+    let reviewStatus = await reviewRepo.addReview(req.query.prodQ, req.query.deliQ, req.query.deliS, req.query.custS, req.query.recomm, accID, req.query.order_id);
     if (!reviewStatus) {
         res.status(400).send("Review failed");
     } else {
@@ -14,8 +17,9 @@ router.get("/add", async (req, res) => {
     }
 });
 
-router.get("/delete", async (req, res) => {
-    let reviewStatus = await reviewRepo.deleteReview(req.query.review_id);
+router.post("/delete", async (req, res) => {
+    let accID = 2; // todo decode jwt
+    let reviewStatus = await reviewRepo.deleteReview(req.query.review_id, accID);
     if (!reviewStatus) {
         res.status(400).send("Review deletion failed");
     } else {
@@ -23,8 +27,9 @@ router.get("/delete", async (req, res) => {
     }
 });
 
-router.get("/edit", async (req, res) => {
-    let reviewStatus = await reviewRepo.editReview(req.query.review_id, req.query.rating, req.query.comment);
+router.post("/edit", async (req, res) => {
+    let accID = 2; // todo decode jwt
+    let reviewStatus = await reviewRepo.editReview(req.query.prodQ, req.query.deliQ, req.query.deliS, req.query.custS, req.query.recomm, accID, req.query.review_id);
     if (!reviewStatus) {
         res.status(400).send("Review edition failed");
     } else {
@@ -33,7 +38,8 @@ router.get("/edit", async (req, res) => {
 });
 
 router.get("/list", async (req, res) => {
-    let reviewList = await reviewRepo.getReviewsOfProduct(req.query.product_id);
+    let accID = 2; // todo decode jwt
+    let reviewList = await reviewRepo.getReviewsOfUser(accID);
     if (!reviewList) {
         res.status(400).send("Review list failed");
     } else {
