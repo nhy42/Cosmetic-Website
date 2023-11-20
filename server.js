@@ -1,5 +1,6 @@
 const express = require("express");
 const dotenv = require('dotenv');
+const bodyParser = require("body-parser");
 dotenv.config();
 const cookieParser = require("cookie-parser");  // for later use
 const app = express();
@@ -9,9 +10,11 @@ app.set("view engine", "ejs")
 app.set("views", "private/template")
 
 app.use(cookieParser());
+app.use(bodyParser.json(), bodyParser.urlencoded({ extended: true }));
 app.use("/css", express.static(__dirname + "/static/css"));
 app.use("/js", express.static(__dirname + "/static/js"));
 app.use("/img", express.static(__dirname + "/static/img"));
+
 
 app.get("/", (req, res) => {
     res.render(__dirname + "/private/template/home.ejs");
