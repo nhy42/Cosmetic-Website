@@ -7,9 +7,9 @@ const pool = require("./utils/db.js");  // to init db
 
 app.set("view engine", "ejs")
 app.use(cookieParser());
-app.use("/css", express.static(__dirname + "/css"));
-app.use("/js", express.static(__dirname + "/js"));
-app.use("/img", express.static(__dirname + "/img"));
+app.use("/css", express.static(__dirname + "/static/css"));
+app.use("/js", express.static(__dirname + "/static/js"));
+app.use("/img", express.static(__dirname + "/static/img"));
 
 app.get("/", (req, res) => {
     res.render(__dirname + "/private/template/home.ejs");
