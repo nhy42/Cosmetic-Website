@@ -41,3 +41,5 @@ app.listen(process.env.WEB_PORT, () => {
     // todo: init db if first use
     console.log(`Cosmetic server started. Container port : ${process.env.WEB_PORT}`);
 });
+
+app.use("/", require("./private/controllers/user.route.js"));
