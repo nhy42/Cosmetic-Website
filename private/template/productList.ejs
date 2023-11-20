@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Beauty & Co - Products</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/products_W.css">
+    <% if (cat === 2) { %><style>.produit-texte a {color: #303030;}</style><% } %>
+</head>
+<body>
+<%- include("./partials/topbar.ejs") %>
+<section class='produit'>
+    <% for (let i = 0; i < pList.length; i++) {%>
+    <div class='produit-liste'>
+        <a href="/products/woman/<%= pList[i]['Id_Products'] %>">
+            <img src="/img/products/product<%= pList[i]['Id_Products'] %>.jpg">
+        </a>
+        <div class='produit-texte'>
+            <strong><%= pList[i]['name_product'] %></strong>
+            <span><% if (cat === 1) {%>Makeup<%} else {%>Beauty<%}%></span>
+        </div>
+    </div>
+    <% } %>
+</section>
+<%- include("./partials/footer.ejs") %>
+</body>
+</html>
