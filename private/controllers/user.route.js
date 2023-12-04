@@ -5,6 +5,7 @@ const userRepo = require('../../utils/user.repository');
 const {checkAuthentication} = require("../../utils/auth");
 // import formatdate from "../../utils/formatdate";
 const formatdate = require("../../utils/date.js");
+const {areValidCreds} = require("../../utils/user.repository");
 
 // /user
 
@@ -13,7 +14,7 @@ router.get("/register", (req, res) => {
 });
 
 router.get("/deleteaccount", (req, res) => {
-    res.send("deleteaccount");  // todo send html template
+    res.render("../template/user-delete.ejs");
 });
 
 router.get("/user/infos", checkAuthentication(["customer", "admin"]),async (req, res) => {
@@ -37,7 +38,8 @@ router.post("/user/deleteaccount", checkAuthentication(["customer", "admin"]), a
     if (!deletionStatus) {
         res.status(400).res("Deletion failed");
     } else {
-        res.send(deletionStatus);
+        res.clearCookie('token');
+        res.redirect("/");
     }
 });
 

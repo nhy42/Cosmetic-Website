@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Beauty & Co - Customer Account</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/user.css">
+</head>
+<body>
+<%- include("./partials/topbar.ejs") %>
+
+<form action="/user/deleteaccount/" method="post" onsubmit="alert('this account has been definitively removed')">
+    <input type="submit" name="delete" value="click here if you are sure you want to delete your account" >
+</form>
+
+<%- include("./partials/footer.ejs") %>
+</body>
+</html>
