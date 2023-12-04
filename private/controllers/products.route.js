@@ -15,13 +15,15 @@ router.get("/man", async (req, res) => {
     res.render("productList.ejs", {cat: 2, pList: productList});
 });
 
-router.get("/man/:prodID", (req, res) => {
-    res.render("beauty_M.ejs");
-}); // todo
+router.get("/man/:prodID", async (req, res) => {
+    let productInfos = await productsRepo.getProductInfos(req.params.prodID);
+    res.render("productInfo.ejs", {cat: 2, prod: productInfos[0]});
+});
 
-router.get("/woman/:prodID", (req, res) => {
-    res.render("makeup_W.ejs");
-}); // todo
+router.get("/woman/:prodID", async (req, res) => {
+    let productInfos = await productsRepo.getProductInfos(req.params.prodID);
+    res.render("productInfo.ejs", {cat: 1, prod: productInfos[0]});
+});
 
 // ADMIN
 

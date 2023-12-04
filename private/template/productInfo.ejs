@@ -11,19 +11,11 @@
 <%- include("./partials/topbar.ejs") %>
 <section class='achat'>
     <div class='achat-liste'>
-        <img src="/img/Homme.jpg">
+        <img src="/img/products/<%= prod['image'] %>">
         <div class='achat-texte'>
-            <strong>Solar cream</strong>
-            <p>A solar creme SP30 sunscreen that offers UVA and UVB protection from the sun’s harmful rays, thanks to
-                its chemical UV filters.
-                This silky moisturizing formula contains an 8% hydrating trio of polyglutamic acid, glycerin and
-                squalane.
-                It retains moisture for a smooth and vibrant finish. <br></p>
-
-
-            <h3>For who ?</h3>
-            <p>Suitable for all skin types and shades..</p>
-            <span class="prix"> 29.99 euros</span>
+            <strong><%= prod['name_product'] %></strong>
+            <p style="white-space: pre-line"><%= prod['description'] %></p>
+            <span class="prix"><%= prod['product_price'] %> euros</span>
             <br>
             <div class="quantité">
                 <span>Quantity</span>

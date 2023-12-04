@@ -14,7 +14,7 @@
     <% for (let i = 0; i < pList.length; i++) {%>
     <div class='produit-liste'>
         <a href="/products/<% if (cat === 1) {%>woman<%} else {%>man<%}%>/<%= pList[i]['Id_Products'] %>">
-            <img src="/img/products/product<%= pList[i]['image'] %>.jpg">
+            <img src="/img/products/<%= pList[i]['image'] %>">
         </a>
         <div class='produit-texte'>
             <strong><%= pList[i]['name_product'] %></strong>

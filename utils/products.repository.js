@@ -28,11 +28,12 @@ module.exports = {
             throw err;
         }
     },
-    async getProductInfos(productID) { // todo
+    async getProductInfos(productID) {
         try {
             let conn = await pool.getConnection();
-            let sql = "";
-            const [rows, fields] = await conn.execute(sql, [ `%${productID}%` ]);
+            // productID = parseInt(productID);
+            let sql = "SELECT * FROM Products WHERE Id_Products=?";
+            const [rows, _] = await conn.execute(sql, [ productID ]);
             conn.release();
             return rows;
         }
