@@ -6,21 +6,34 @@ const {checkAuthentication} = require("../../utils/auth");
 
 // /review
 
-// todo get requests
+router.get("/add", checkAuthentication("customer"), async (req, res) => {
+    let emptyReview = {Id_order: "", product_quality: "", delivery_quality: "", delivery_speed: "", customer_service: "", recommendation: ""};
+    res.render("reviews.ejs", {empty: true, r: emptyReview});
+});
+
+router.get("/edit/:id", checkAuthentication("customer"), async (req, res) => {
+    let reviewInfos = await reviewRepo.getReviewInfos(req.params.id);
+    res.render("reviews.ejs", {empty: false, r: reviewInfos[0]});
+});
+
+router.get("/list", checkAuthentication("customer"), async (req, res) => {
+    let reviewList = await reviewRepo.getReviewsOfUser(req.user.id);
+    res.render("reviewList.ejs", {rList: reviewList});
+});
 
 router.post("/add", checkAuthentication("customer"), async (req, res) => {
     let accID = req.user.id;
-    let reviewStatus = await reviewRepo.addReview(req.query.prodQ, req.query.deliQ, req.query.deliS, req.query.custS, req.query.recomm, accID, req.query.order_id);
+    let reviewStatus = await reviewRepo.addReview(req.body.prodQ, req.body.deliQ, req.body.deliS, req.body.custS, req.body.recomm, accID, req.body.order_id);
     if (!reviewStatus) {
         res.status(400).send("Review failed");
     } else {
-        res.send(reviewStatus);
+        res.redirect("/review/list");
     }
 });
 
 router.post("/delete", checkAuthentication("customer"), async (req, res) => {
     let accID = req.user.id;
-    let reviewStatus = await reviewRepo.deleteReview(req.query.review_id, accID);
+    let reviewStatus = await reviewRepo.deleteReview(req.body.review_id, accID);
     if (!reviewStatus) {
         res.status(400).send("Review deletion failed");
     } else {
@@ -30,11 +43,11 @@ router.post("/delete", checkAuthentication("customer"), async (req, res) => {
 
 router.post("/edit", checkAuthentication("customer"), async (req, res) => {
     let accID = req.user.id;
-    let reviewStatus = await reviewRepo.editReview(req.query.prodQ, req.query.deliQ, req.query.deliS, req.query.custS, req.query.recomm, accID, req.query.review_id);
+    let reviewStatus = await reviewRepo.editReview(req.body.prodQ, req.body.deliQ, req.body.deliS, req.body.custS, req.body.recomm, accID, req.body.review_id);
     if (!reviewStatus) {
         res.status(400).send("Review edition failed");
     } else {
-        res.send(reviewStatus);
+        res.redirect("/review/list");
     }
 });
 

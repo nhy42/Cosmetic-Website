@@ -18,7 +18,7 @@ module.exports = {
     async deleteReview(review_id, accID) {
         try {
             let conn = await pool.getConnection();
-            let sql = "DELETE FROM Review WHERE Id_review = ? AND Id_user = ?";
+            let sql = "DELETE FROM Review WHERE Id_review = ? AND Id_users = ?";
             const [rows, field] = await conn.execute(sql, [review_id, accID]);
             conn.release();
             return rows;
@@ -45,6 +45,19 @@ module.exports = {
             let conn = await pool.getConnection();
             let sql = "SELECT * FROM Review WHERE Id_users = ?";
             const [rows, fields] = await conn.execute(sql, [account_id]);
+            conn.release();
+            return rows;
+        }
+        catch (err) {
+            console.log(err);
+            return false;
+        }
+    },
+    async getReviewInfos(review_id) {
+        try {
+            let conn = await pool.getConnection();
+            let sql = "SELECT * FROM Review WHERE Id_review = ?";
+            const [rows, _] = await conn.execute(sql, [review_id]);
             conn.release();
             return rows;
         }
