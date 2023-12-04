@@ -45,7 +45,9 @@ router.post("/user/deleteaccount", checkAuthentication(["customer", "admin"]), a
 
 router.post("/user/editaccount", checkAuthentication(["customer", "admin"]), async (req, res) => {
     let accID = req.user.id;
-    let editStatus = await userRepo.editUserInfos(accID, req.body.mail, req.body.firstname, req.body.lastname, req.body.password, req.body.gender, req.body.date_of_birth);
+    let pass = req.body.password;
+    pass
+    let editStatus = await userRepo.editUserInfos(accID, req.body.mail, req.body.firstname, req.body.lastname, pass, req.body.gender, req.body.date_of_birth);
     if (!editStatus) {
         res.status(400).send("Edit failed");
     } else {

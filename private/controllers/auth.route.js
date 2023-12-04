@@ -8,11 +8,16 @@ const {createJWT, checkAuthentication} = require("../../utils/auth");
 // /auth
 
 router.get("/login", (req, res) => {
-    res.render("../template/user.ejs");
+    if (req.user) {
+        res.redirect("/user/infos");
+    } else {
+        res.render("../template/user.ejs");
+    }
 });
 
 router.get("/logout", (req, res) => {
-    res.send("logout");  // todo
+    res.clearCookie("token");
+    res.redirect("/");
 });
 
 router.post("/login", async (req, res) => {
