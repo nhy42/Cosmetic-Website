@@ -15,9 +15,9 @@ module.exports = {
     },
     async createNewUser (mail, firstname, lastname, password, gender, date_of_birth) {
         try {
-            // todo : hash password
+            password = await bcrypt.hash(password, 10);
             let conn = await pool.getConnection();
-            let sql = "INSERT INTO Users VALUES (null, ?, ?, ?, ?, ?, ?)";
+            let sql = "INSERT INTO Users VALUES (null, ?, ?, ?, ?, ?, 'customer', ?)";
             const [rows, field] = await conn.execute(sql, [mail, lastname, firstname, password, gender, date_of_birth]);
             conn.release();
             return rows;
@@ -58,6 +58,26 @@ module.exports = {
             const [rows, fields] = await conn.execute(sql, [mail, lastname, firstname, password, gender, date_of_birth, userID]);
             conn.release();
             return rows;
+        } catch (err) {
+            console.log(err);
+            return false;
+        }
+    },
+    async areValidCreds(mail, password) {
+        try {
+            let conn = await pool.getConnection();
+            let sql = "SELECT * FROM Users WHERE mail = ?";
+            const [rows, fields] = await conn.execute(sql, [mail]);
+            conn.release();
+            // check bcrypt password
+            if (rows.length === 1 && await bcrypt.compare(password, rows[0].password)) {
+                return {
+                    id: rows[0].Id_users,
+                    mail: rows[0].mail,
+                    role: rows[0].user_type
+                };
+            }
+            return false;
         } catch (err) {
             console.log(err);
             return false;

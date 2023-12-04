@@ -2,14 +2,16 @@ const express = require("express");
 const dotenv = require('dotenv');
 const bodyParser = require("body-parser");
 dotenv.config();
-const cookieParser = require("cookie-parser");  // for later use
+const cookieParser = require("cookie-parser");
 const app = express();
-const pool = require("./utils/db.js");  // to init db
+const pool = require("./utils/db.js");
+const {parseJWTMiddleware} = require("./utils/auth");
 
 app.set("view engine", "ejs")
 app.set("views", "private/template")
 
 app.use(cookieParser());
+app.use(parseJWTMiddleware);
 app.use(bodyParser.json(), bodyParser.urlencoded({ extended: true }));
 app.use("/css", express.static(__dirname + "/static/css"));
 app.use("/js", express.static(__dirname + "/static/js"));
@@ -45,3 +47,4 @@ app.listen(process.env.WEB_PORT, () => {
 app.use("/", require("./private/controllers/user.route.js"));
 app.use("/products", require("./private/controllers/products.route.js"));
 app.use("/review", require("./private/controllers/review.route.js"));
+app.use("/", require("./private/controllers/auth.route.js"));

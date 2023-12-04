@@ -63,6 +63,7 @@ CREATE TABLE `Users` (
   `firstname` varchar(50) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
   `gender` int DEFAULT NULL,
+  `user_type` varchar(10) DEFAULT 'customer',
   `date_of_birth` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
