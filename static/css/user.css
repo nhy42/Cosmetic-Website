@@ -58,4 +58,16 @@ p {
 
 .birth{
     color:black;
+    text-align:left;
+}
+.gender-label {
+    text-align: right;
+    display: block;
+    margin-bottom: 8px;
+    color:black;
+    text-align:left;
+}
+
+.form-group {
+    margin-bottom: 16px; /* Ajoute une marge en bas pour l'esthétique */
 }
