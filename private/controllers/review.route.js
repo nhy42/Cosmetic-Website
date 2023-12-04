@@ -2,13 +2,14 @@
 const express = require('express');
 const router = express.Router();
 const reviewRepo = require('../../utils/review.repository');
+const {checkAuthentication} = require("../../utils/auth");
 
 // /review
 
 // todo get requests
 
-router.post("/add", async (req, res) => {
-    let accID = 2; // todo decode jwt
+router.post("/add", checkAuthentication("customer"), async (req, res) => {
+    let accID = req.user.id;
     let reviewStatus = await reviewRepo.addReview(req.query.prodQ, req.query.deliQ, req.query.deliS, req.query.custS, req.query.recomm, accID, req.query.order_id);
     if (!reviewStatus) {
         res.status(400).send("Review failed");
@@ -17,8 +18,8 @@ router.post("/add", async (req, res) => {
     }
 });
 
-router.post("/delete", async (req, res) => {
-    let accID = 2; // todo decode jwt
+router.post("/delete", checkAuthentication("customer"), async (req, res) => {
+    let accID = req.user.id;
     let reviewStatus = await reviewRepo.deleteReview(req.query.review_id, accID);
     if (!reviewStatus) {
         res.status(400).send("Review deletion failed");
@@ -27,8 +28,8 @@ router.post("/delete", async (req, res) => {
     }
 });
 
-router.post("/edit", async (req, res) => {
-    let accID = 2; // todo decode jwt
+router.post("/edit", checkAuthentication("customer"), async (req, res) => {
+    let accID = req.user.id;
     let reviewStatus = await reviewRepo.editReview(req.query.prodQ, req.query.deliQ, req.query.deliS, req.query.custS, req.query.recomm, accID, req.query.review_id);
     if (!reviewStatus) {
         res.status(400).send("Review edition failed");
@@ -37,8 +38,8 @@ router.post("/edit", async (req, res) => {
     }
 });
 
-router.get("/list", async (req, res) => {
-    let accID = 2; // todo decode jwt
+router.get("/list", checkAuthentication("customer"), async (req, res) => {
+    let accID = req.user.id;
     let reviewList = await reviewRepo.getReviewsOfUser(accID);
     if (!reviewList) {
         res.status(400).send("Review list failed");

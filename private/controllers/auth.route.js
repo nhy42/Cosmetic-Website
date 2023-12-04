@@ -7,6 +7,14 @@ const {createJWT, checkAuthentication} = require("../../utils/auth");
 
 // /auth
 
+router.get("/login", (req, res) => {
+    res.send("login");  // todo
+});
+
+router.get("/logout", (req, res) => {
+    res.send("logout");  // todo
+});
+
 router.post("/login", async (req, res) => {
     let loginStatus = await userRepo.areValidCreds(req.query.mail, req.query.password);
     if (loginStatus && !req.user) {

@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const productsRepo = require('../../utils/products.repository');
+const {checkAuthentication} = require("../../utils/auth");
 
 // /products
 
@@ -27,26 +28,22 @@ router.get("/woman/:prodID", async (req, res) => {
 
 // ADMIN
 
-router.get("/delete/:id", (req, res) => {
-    // todo: auth
+router.get("/delete/:id", checkAuthentication("admin"), (req, res) => {
     // todo: template
     res.send("delete");
 });
 
-router.get("/adminProductList", (req, res) => {
-    // todo: auth
+router.get("/adminProductList", checkAuthentication("admin"), (req, res) => {
     // todo: template
     res.send("adminProductList");
 });
 
-router.get("/edit/:id", (req, res) => {
-    // todo: auth
+router.get("/edit/:id", checkAuthentication("admin"), (req, res) => {
     // todo: template
     res.send("edit");
 });
 
-router.post("/edit/:id", async (req, res) => {
-    // todo: admin auth
+router.post("/edit/:id", checkAuthentication("admin"), async (req, res) => {
     let creationResult = await productsRepo.editProduct(req.params.id, req.query.name, req.query.price, req.query.desc, req.query.vegan, req.query.image, req.query.cat);
     if (!creationResult) {
         res.status(400).send("Product edition failed.");
@@ -56,8 +53,7 @@ router.post("/edit/:id", async (req, res) => {
     }
 });
 
-router.post("/new", async (req, res) => {
-    // todo: admin auth
+router.post("/new", checkAuthentication("admin"), async (req, res) => {
     let creationResult = await productsRepo.createProduct(req.query.name, req.query.price, req.query.desc, req.query.vegan, req.query.image, req.query.cat);
     if (!creationResult) {
         res.status(400).send("Product creation failed.");
@@ -67,8 +63,7 @@ router.post("/new", async (req, res) => {
     }
 });
 
-router.post("/delete/:id", async (req, res) => {
-    // todo: admin auth
+router.post("/delete/:id", checkAuthentication("admin"), async (req, res) => {
     let creationResult = await productsRepo.deleteProduct(req.params.id);
     if (!creationResult) {
         res.status(400).send("Product deletion failed.");
