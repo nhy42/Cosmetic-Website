@@ -36,9 +36,14 @@ router.get("/adminProductList", checkAuthentication("admin"), async (req, res) =
     res.render("adminProductList.ejs", {pList: await productsRepo.getAllProducts()});
 });
 
-router.get("/edit/:id", checkAuthentication("admin"), (req, res) => {
-    // todo: template
-    res.send("edit");
+router.get("/edit/:id", checkAuthentication("admin"), async (req, res) => {
+    let productInfos = await productsRepo.getProductInfos(req.params.id);
+    res.render("editProduct.ejs", {isNew: false, p: productInfos[0]});
+});
+
+router.get("/new", checkAuthentication("admin"), (req, res) => {
+    let empty = {name_product: "", product_price: "", description: "", vegan: "", image: "", Id_category: ""};
+    res.render("editProduct.ejs", {isNew: true, p: empty});
 });
 
 router.post("/edit/:id", checkAuthentication("admin"), async (req, res) => {

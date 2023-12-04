@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Beauty & Co - Products</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/makeup_W.css">
+</head>
+<body>
+<%- include("./partials/topbar.ejs") %>
+<section class='achat'>
+    <form action="/products/<% if (isNew) { %>new<% } else {%>edit/<%= p['Id_Products'] %><% } %>" method="post">
+        <input type="text" name="name" placeholder="Name of the product" value="<%= p['name_product'] %>">
+        <textarea name="desc" placeholder="Description"><%= p['description'] %></textarea>
+        <input type="text" name="price" placeholder="Price" value="<%= p['product_price'] %>">
+        <input type="text" name="image" placeholder="Image name" value="<%= p['image'] %>">
+        <select name="vegan">
+            <option value="0" <% if (!isNew && p['vegan'] === 0) { %>selected<% } %>>Not vegan</option>
+            <option value="1" <% if (!isNew && p['vegan'] === 1) { %>selected<% } %>>Vegan</option>
+        </select>
+        <select name="category">
+            <option value="1" <% if (p['Id_category'] === 0) { %>selected<% } %>>Makeup</option>
+            <option value="2" <% if (p['Id_category'] === 1) { %>selected<% } %>>Skincare</option>
+        </select>
+        <button type="submit">Add product</button>
+    </form>
+</section>
+<%- include("./partials/footer.ejs") %>
+</body>
+</html>
