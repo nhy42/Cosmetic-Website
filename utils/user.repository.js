@@ -42,7 +42,7 @@ module.exports = {
         try {
             let conn = await pool.getConnection();
             let sql = "SELECT * FROM Users WHERE Id_users = ?";
-            const [rows, fields] = await conn.execute(sql, [userID]);
+            const [rows, _] = await conn.execute(sql, [userID]);
             conn.release();
             return rows;
         }

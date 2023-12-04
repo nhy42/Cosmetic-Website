@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Beauty & Co - Customer Account</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/user.css">
+</head>
+<body>
+
+<%- include("./partials/topbar.ejs") %>
+<form action="/user/editaccount" method="post">
+    <div>Your informations: </div>
+    <input type="text" name="mail" value="<%= u['mail'] %>">
+    <input type="text" name="lastname" value="<%= u['lastname'] %>">
+    <input type="text" name="firstname" value="<%= u['firstname'] %>">
+    <input type="text" name="password" value="">
+    <input type="text" name="gender" value="<%= u['gender'] %>">
+    <input type="date" name="date_of_birth" value="<%= u['date_of_birth'] %>">
+    <input type="submit" name="submit" value="Save your changes">
+</form>
+<div>
+    <p>Danger zone</p>
+    <a href="/user/deleteaccount/<%= u['Id_users'] %>">Delete your account</a>
+</div>
+<%- include("./partials/footer.ejs") %>
+</body>
+</html>

@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 const userRepo = require('../../utils/user.repository');
 const {checkAuthentication} = require("../../utils/auth");
+// import formatdate from "../../utils/formatdate";
+const formatdate = require("../../utils/date.js");
 
 // /user
 
@@ -14,12 +16,10 @@ router.get("/deleteaccount", (req, res) => {
     res.send("deleteaccount");  // todo send html template
 });
 
-router.get("/user/editaccount", (req, res) => {
-    res.send("editaccount");  // todo send html template
-});
-
-router.get("/user/infos", (req, res) => {
-    res.send("user");  // todo send html template
+router.get("/user/infos", checkAuthentication(["customer", "admin"]),async (req, res) => {
+    let userInfos = await userRepo.getUserInfos(req.user.id);
+    userInfos[0].date_of_birth = formatdate.formatDate(userInfos[0].date_of_birth);
+    res.render("../template/user-info.ejs", {u: userInfos[0]});
 });
 
 router.post("/register", async (req, res) => {
@@ -47,7 +47,7 @@ router.post("/user/editaccount", checkAuthentication(["customer", "admin"]), asy
     if (!editStatus) {
         res.status(400).send("Edit failed");
     } else {
-        res.send(editStatus);
+        res.redirect("/user/infos");
     }
 });
 
