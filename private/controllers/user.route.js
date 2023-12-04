@@ -7,7 +7,7 @@ const {checkAuthentication} = require("../../utils/auth");
 // /user
 
 router.get("/register", (req, res) => {
-    res.send("register");  // todo send html template
+    res.render("../template/create-account.ejs");
 });
 
 router.get("/deleteaccount", (req, res) => {
@@ -23,11 +23,11 @@ router.get("/user/infos", (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
-    let registrationStatus = await userRepo.createNewUser(req.query.mail, req.query.firstname, req.query.lastname, req.query.password, req.query.gender, req.query.date_of_birth);
+    let registrationStatus = await userRepo.createNewUser(req.body.mail, req.body.firstname, req.body.lastname, req.body.password, req.body.gender, req.body.date_of_birth);
     if (!registrationStatus) {
         res.status(400).res("Registration failed");
     } else {
-        res.send(registrationStatus);
+        res.redirect("/login");
     }
 });
 
@@ -43,7 +43,7 @@ router.post("/user/deleteaccount", checkAuthentication(["customer", "admin"]), a
 
 router.post("/user/editaccount", checkAuthentication(["customer", "admin"]), async (req, res) => {
     let accID = req.user.id;
-    let editStatus = await userRepo.editUserInfos(accID, req.query.mail, req.query.firstname, req.query.lastname, req.query.password, req.query.gender, req.query.date_of_birth);
+    let editStatus = await userRepo.editUserInfos(accID, req.body.mail, req.body.firstname, req.body.lastname, req.body.password, req.body.gender, req.body.date_of_birth);
     if (!editStatus) {
         res.status(400).send("Edit failed");
     } else {

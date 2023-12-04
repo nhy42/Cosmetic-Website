@@ -8,7 +8,7 @@ const {createJWT, checkAuthentication} = require("../../utils/auth");
 // /auth
 
 router.get("/login", (req, res) => {
-    res.send("login");  // todo
+    res.render("../template/user.ejs");
 });
 
 router.get("/logout", (req, res) => {
@@ -16,14 +16,14 @@ router.get("/logout", (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-    let loginStatus = await userRepo.areValidCreds(req.query.mail, req.query.password);
+    let loginStatus = await userRepo.areValidCreds(req.body.mail, req.body.password);
     if (loginStatus && !req.user) {
         let token = createJWT(loginStatus);
         res.cookie('token', token, { maxAge: 5*60*60*1000, httpOnly: true });
         res.redirect("/");
     } else {
         if (req.user) {
-            res.status(400).res("Already logged in");
+            res.redirect("/");
         } else {
             res.status(400).res("Login failed");
         }

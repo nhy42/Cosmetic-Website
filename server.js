@@ -38,14 +38,6 @@ app.get("/cart", (req, res) => {
     res.render(__dirname + "/private/template/cart.ejs");
 });
 
-app.get("/user", (req, res) => {
-    res.render(__dirname + "/private/template/user.ejs");
-});
-
-app.get("/create-account", (req, res) => {
-    res.render(__dirname + "/private/template/create-account.ejs");
-});
-
 app.get("/admin", (req, res) => {
     res.render(__dirname + "/private/template/admin.ejs");
 });
