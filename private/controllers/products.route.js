@@ -28,14 +28,12 @@ router.get("/woman/:prodID", async (req, res) => {
 
 // ADMIN
 
-router.get("/delete/:id", checkAuthentication("admin"), (req, res) => {
-    // todo: template
-    res.send("delete");
+router.get("/delete/:id", checkAuthentication("admin"), async (req, res) => {
+    res.render("delete-product.ejs", {pID: req.params.id});
 });
 
-router.get("/adminProductList", checkAuthentication("admin"), (req, res) => {
-    // todo: template
-    res.send("adminProductList");
+router.get("/adminProductList", checkAuthentication("admin"), async (req, res) => {
+    res.render("adminProductList.ejs", {pList: await productsRepo.getAllProducts()});
 });
 
 router.get("/edit/:id", checkAuthentication("admin"), (req, res) => {

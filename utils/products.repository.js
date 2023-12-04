@@ -5,7 +5,7 @@ module.exports = {
     async getAllProducts() { // todo
         try {
             let conn = await pool.getConnection();
-            let sql = "";
+            let sql = "SELECT * FROM Products";
             const [rows, fields] = await conn.execute(sql);
             conn.release();
             return rows;
