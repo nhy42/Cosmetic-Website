@@ -15,8 +15,12 @@
     <input type="text" name="mail" value="<%= u['mail'] %>">
     <input type="text" name="lastname" value="<%= u['lastname'] %>">
     <input type="text" name="firstname" value="<%= u['firstname'] %>">
-    <input type="text" name="password" value="" required>
-    <input type="text" name="gender" value="<%= u['gender'] %>">
+    <input type="text" name="password" value="" required placeholder="New password">
+    <select id="gender" name="gender">
+        <option value="" disabled selected hidden>Please choose</option>
+        <option value="1" <% if (u['gender'] === 1) { %>selected<% } %>>Woman</option>
+        <option value="2" <% if (u['gender'] === 2) { %>selected<% } %>>Man</option>
+    </select>
     <input type="date" name="date_of_birth" value="<%= u['date_of_birth'] %>">
     <input type="submit" name="submit" value="Save your changes">
 </form>

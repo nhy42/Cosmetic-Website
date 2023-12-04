@@ -2,7 +2,7 @@ pool = require("../utils/db.js");
 
 
 module.exports = {
-    async getAllProducts() { // todo
+    async getAllProducts() {
         try {
             let conn = await pool.getConnection();
             let sql = "SELECT * FROM Products";

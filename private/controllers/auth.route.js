@@ -25,7 +25,7 @@ router.post("/login", async (req, res) => {
         if (req.user) {
             res.redirect("/");
         } else {
-            res.status(400).res("Login failed");
+            res.status(400).send("Login failed");
         }
     }
 });

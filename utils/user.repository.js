@@ -26,11 +26,11 @@ module.exports = {
             return false;
         }
     },
-    async deleteUser (mail) {
+    async deleteUser(mail) {
         try {
             let conn = await pool.getConnection();
             let sql = "DELETE FROM Users WHERE mail = ?";
-            const [rows, field] = await conn.execute(sql, [mail]);
+            const [rows, _] = await conn.execute(sql, [mail]);
             conn.release();
             return rows;
         } catch (err) {
@@ -38,7 +38,7 @@ module.exports = {
             return false;
         }
     },
-    async getUserInfos (userID) {
+    async getUserInfos(userID) {
         try {
             let conn = await pool.getConnection();
             let sql = "SELECT * FROM Users WHERE Id_users = ?";
