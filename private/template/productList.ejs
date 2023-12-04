@@ -13,8 +13,8 @@
 <section class='produit'>
     <% for (let i = 0; i < pList.length; i++) {%>
     <div class='produit-liste'>
-        <a href="/products/woman/<%= pList[i]['Id_Products'] %>">
-            <img src="/img/products/product<%= pList[i]['Id_Products'] %>.jpg">
+        <a href="/products/<% if (cat === 1) {%>woman<%} else {%>man<%}%>/<%= pList[i]['Id_Products'] %>">
+            <img src="/img/products/product<%= pList[i]['image'] %>.jpg">
         </a>
         <div class='produit-texte'>
             <strong><%= pList[i]['name_product'] %></strong>
