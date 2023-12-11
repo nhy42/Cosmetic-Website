@@ -22,10 +22,6 @@ app.get("/", (req, res) => {
     res.render(__dirname + "/private/template/home.ejs");
 });
 
-app.get("/reviews", (req, res) => {
-    res.render(__dirname + "/private/template/reviews.ejs");
-});
-
 app.get("/contact", (req, res) => {
     res.render(__dirname + "/private/template/contact.ejs");
 });

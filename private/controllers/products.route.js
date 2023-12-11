@@ -47,7 +47,7 @@ router.get("/new", checkAuthentication("admin"), (req, res) => {
 });
 
 router.post("/edit/:id", checkAuthentication("admin"), async (req, res) => {
-    let creationResult = await productsRepo.editProduct(req.params.id, req.query.name, req.query.price, req.query.desc, req.query.vegan, req.query.image, req.query.cat);
+    let creationResult = await productsRepo.editProduct(req.params.id, req.body.name, req.body.price, req.body.desc, req.body.vegan, req.body.image, req.body.cat);
     if (!creationResult) {
         res.status(400).send("Product edition failed.");
     }
@@ -57,7 +57,7 @@ router.post("/edit/:id", checkAuthentication("admin"), async (req, res) => {
 });
 
 router.post("/new", checkAuthentication("admin"), async (req, res) => {
-    let creationResult = await productsRepo.createProduct(req.query.name, req.query.price, req.query.desc, req.query.vegan, req.query.image, req.query.cat);
+    let creationResult = await productsRepo.createProduct(req.body.name, req.body.price, req.body.desc, req.body.vegan, req.body.image, req.body.cat);
     if (!creationResult) {
         res.status(400).send("Product creation failed.");
     }
