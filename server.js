@@ -6,6 +6,7 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const pool = require("./utils/db.js");
 const {parseJWTMiddleware} = require("./utils/auth");
+const statsRepo = require('./utils/stats.repository');
 
 app.set("view engine", "ejs")
 app.set("views", "private/template")
@@ -18,8 +19,17 @@ app.use("/js", express.static(__dirname + "/static/js"));
 app.use("/img", express.static(__dirname + "/static/img"));
 
 
-app.get("/", (req, res) => {
-    res.render(__dirname + "/private/template/home.ejs");
+app.get("/", async (req, res) => {
+    try {
+        let threeMost = await statsRepo.get3MostSoldProducts();
+        if (threeMost.length === 0) {
+            throw "Not enough products";
+        }
+        res.render(__dirname + "/private/template/home.ejs", {pList: threeMost});
+    } catch (e) {
+        res.render(__dirname + "/private/template/homedefault.ejs");
+    }
+
 });
 
 app.get("/contact", (req, res) => {
@@ -48,3 +58,4 @@ app.use("/", require("./private/controllers/user.route.js"));
 app.use("/products", require("./private/controllers/products.route.js"));
 app.use("/review", require("./private/controllers/review.route.js"));
 app.use("/", require("./private/controllers/auth.route.js"));
+app.use("/stats", require("./private/controllers/stats.route.js"));

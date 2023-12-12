@@ -26,7 +26,7 @@ router.get("/user/infos", checkAuthentication(["customer", "admin"]),async (req,
 router.post("/register", async (req, res) => {
     let registrationStatus = await userRepo.createNewUser(req.body.mail, req.body.firstname, req.body.lastname, req.body.password, req.body.gender, req.body.date_of_birth);
     if (!registrationStatus) {
-        res.status(400).res("Registration failed");
+        res.status(400).send("Registration failed");
     } else {
         res.redirect("/login");
     }
@@ -36,7 +36,7 @@ router.post("/user/deleteaccount", checkAuthentication(["customer", "admin"]), a
     let mail = req.user.mail;
     let deletionStatus = await userRepo.deleteUser(mail);
     if (!deletionStatus) {
-        res.status(400).res("Deletion failed");
+        res.status(400).send("Deletion failed");
     } else {
         res.clearCookie('token');
         res.redirect("/");
@@ -46,7 +46,6 @@ router.post("/user/deleteaccount", checkAuthentication(["customer", "admin"]), a
 router.post("/user/editaccount", checkAuthentication(["customer", "admin"]), async (req, res) => {
     let accID = req.user.id;
     let pass = req.body.password;
-    pass
     let editStatus = await userRepo.editUserInfos(accID, req.body.mail, req.body.firstname, req.body.lastname, pass, req.body.gender, req.body.date_of_birth);
     if (!editStatus) {
         res.status(400).send("Edit failed");
