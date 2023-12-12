@@ -1,11 +1,11 @@
 .produit {
     display: flex;
     justify-content: space-around;
-    align-items: flex-end; /* Align items at the bottom */
+    align-items: flex-end; 
 }
 
 .produit-liste {
-    flex: 0 0 200px; /* Adjusted for smaller image size */
+    flex: 0 0 200px; 
     margin-bottom: 20px;
 }
 

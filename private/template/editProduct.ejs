@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/makeup_W.css">
+    <link rel="stylesheet" href="/css/edit-product.css">
 </head>
 <body>
 <%- include("./partials/topbar.ejs") %>
+<h1>Edit Products</h1>
 <section class='achat'>
     <form action="/products/<% if (isNew) { %>new<% } else {%>edit/<%= p['Id_Products'] %><% } %>" method="post">
         <input type="text" name="name" placeholder="Name of the product" value="<%= p['name_product'] %>">

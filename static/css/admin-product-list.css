@@ -1,0 +1,32 @@
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #af7245db;
+}
+
+th {
+    background-color: #af7245db;
+}
+
+a {
+    text-decoration: none;
+    color: #af7245db;
+}
+
+td a:hover {
+    color: #e74c3c;
+}
+
+.container{
+    text-align: center;
+}
+
+

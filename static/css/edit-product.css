@@ -56,10 +56,6 @@ p {
     text-align: center;
 } 
 
-.birth{
-    color:black;
-    text-align:left;
-}
 .gender-label {
     text-align: right;
     display: block;
@@ -70,4 +66,17 @@ p {
 
 .form-group {
     margin-bottom: 16px; 
+}
+
+
+textarea {
+    resize: vertical; /* Permet le redimensionnement vertical seulement */
+    min-height: 100px; /* Hauteur minimale du champ de texte */
+    width: 100%; /* Prend la pleine largeur du conteneur */
+    margin-bottom: 10px; /* Espacement entre le champ de texte et les autres éléments */
+    overflow-y: auto; /* Ajoute une barre de défilement vertical en cas de dépassement de la hauteur */
+}
+
+input, select, button {
+    margin-bottom: 10px;
 }
