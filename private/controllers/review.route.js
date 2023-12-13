@@ -6,9 +6,13 @@ const {checkAuthentication} = require("../../utils/auth");
 
 // /review
 
-router.get("/add", checkAuthentication("customer"), async (req, res) => {
-    let emptyReview = {Id_order: "", product_quality: "", delivery_quality: "", delivery_speed: "", customer_service: "", recommendation: ""};
-    res.render("reviews.ejs", {empty: true, r: emptyReview});
+router.get("/add", checkAuthentication(["customer", "admin"]), async (req, res) => {
+    if (req.user.role === "admin") {
+        res.redirect("/review/list");
+    } else {
+        let emptyReview = {Id_order: "", product_quality: "", delivery_quality: "", delivery_speed: "", customer_service: "", recommendation: ""};
+        res.render("reviews.ejs", {empty: true, r: emptyReview});
+    }
 });
 
 router.get("/edit/:id", checkAuthentication("customer"), async (req, res) => {
@@ -16,9 +20,14 @@ router.get("/edit/:id", checkAuthentication("customer"), async (req, res) => {
     res.render("reviews.ejs", {empty: false, r: reviewInfos[0]});
 });
 
-router.get("/list", checkAuthentication("customer"), async (req, res) => {
-    let reviewList = await reviewRepo.getReviewsOfUser(req.user.id);
-    res.render("reviewList.ejs", {rList: reviewList});
+router.get("/list", checkAuthentication(["customer", "admin"]), async (req, res) => {
+    if (req.user.role === "admin") {
+        let reviewList = await reviewRepo.getAllReviews();
+        res.render("reviewList.ejs", {rList: reviewList, admin: true});
+    } else {
+        let reviewList = await reviewRepo.getReviewsOfUser(req.user.id);
+        res.render("reviewList.ejs", {rList: reviewList, admin: false});
+    }
 });
 
 router.post("/add", checkAuthentication("customer"), async (req, res) => {

@@ -18,8 +18,10 @@
         <th>Customer service</th>
         <th>Speed</th>
         <th>Recommendation</th>
+        <% if (!admin) {%>
         <th>Edit</th>
         <th>Delete</th>
+        <% } %>
     </tr>
     </thead>
     <% for (let i = 0; i < rList.length; i++) {%>
@@ -30,6 +32,7 @@
             <td><%= rList[i]['customer_service']%></td>
             <td><%= rList[i]['delivery_speed']%></td>
             <td><%= rList[i]['recommendation']%></td>
+            <% if (!admin) {%>
             <td><a href="/review/edit/<%= rList[i]['Id_review']%>">Edit</a></td>
             <td>
                 <form action="/review/delete" method="post">
@@ -37,6 +40,7 @@
                     <input type="submit" value="Delete">
                 </form>
             </td>
+            <% } %>
         </tr>
     <% } %>
 

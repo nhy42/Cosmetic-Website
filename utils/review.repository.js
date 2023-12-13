@@ -65,5 +65,18 @@ module.exports = {
             console.log(err);
             return false;
         }
+    },
+    async getAllReviews() {
+        try {
+            let conn = await pool.getConnection();
+            let sql = "SELECT * FROM Review";
+            const [rows, _] = await conn.execute(sql);
+            conn.release();
+            return rows;
+        }
+        catch (err) {
+            console.log(err);
+            return false;
+        }
     }
 };
