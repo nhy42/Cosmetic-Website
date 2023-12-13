@@ -70,11 +70,11 @@ p {
 
 
 textarea {
-    resize: vertical; /* Permet le redimensionnement vertical seulement */
-    min-height: 100px; /* Hauteur minimale du champ de texte */
-    width: 100%; /* Prend la pleine largeur du conteneur */
-    margin-bottom: 10px; /* Espacement entre le champ de texte et les autres éléments */
-    overflow-y: auto; /* Ajoute une barre de défilement vertical en cas de dépassement de la hauteur */
+    resize: vertical; 
+    min-height: 100px; 
+    width: 100%; 
+    margin-bottom: 10px; 
+    overflow-y: auto; 
 }
 
 input, select, button {

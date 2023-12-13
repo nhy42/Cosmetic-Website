@@ -28,7 +28,8 @@ h1 {
     background-color: #af7245db;
     color: white;
 }
-img {
+
+td > img {
     max-width: 200px;
     max-height: 200px;
 }
