@@ -25,7 +25,7 @@ router.get("/order/checkout", checkAuthentication("customer"), async (req, res) 
     if (!orderStatus) {
         res.status(400).send("Order failed");
     } else {
-        res.redirect("/cart");
+        res.render("checkout.ejs", {orderNum: orderStatus});
     }
 });
 

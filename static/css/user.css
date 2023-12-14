@@ -71,3 +71,23 @@ p {
 .form-group {
     margin-bottom: 16px; 
 }
+
+.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    width: 98vw;
+    height: calc(100vh - 100px);
+    margin: 0;
+}
+
+.leftContainer {
+    flex: 0.5;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

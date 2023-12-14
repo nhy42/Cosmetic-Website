@@ -11,7 +11,12 @@
 <%- include('./partials/topbar.ejs')%>
 <section>
     <h1> Thanks for your order! </h1><br>
-    <p> Your order number is the n°<%= orderNum%></p>
+    <p> Your order number is the n°<%= orderNum %></p>
+    <script>
+        setTimeout(function(){
+            window.location.href = "/";
+        }, 5000);
+    </script>
 </section>
 <%- include('./partials/footer.ejs')%>
 </body>

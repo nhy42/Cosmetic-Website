@@ -20,7 +20,7 @@ router.get("/deleteaccount", (req, res) => {
 router.get("/user/infos", checkAuthentication(["customer", "admin"]),async (req, res) => {
     let userInfos = await userRepo.getUserInfos(req.user.id);
     userInfos[0].date_of_birth = formatdate.formatDate(userInfos[0].date_of_birth);
-    res.render("../template/user-info.ejs", {u: userInfos[0]});
+    res.render("../template/user-info.ejs", {u: userInfos[0], role: req.user.role});
 });
 
 router.post("/register", async (req, res) => {
