@@ -21,8 +21,8 @@
             <option value="1" <% if (!isNew && p['vegan'] === 1) { %>selected<% } %>>Vegan</option>
         </select>
         <select name="cat">
-            <option value="1" <% if (p['Id_category'] === 0) { %>selected<% } %>>Makeup</option>
-            <option value="2" <% if (p['Id_category'] === 1) { %>selected<% } %>>Skincare</option>
+            <option value="1" <% if (p['Id_category'] === 1) { %>selected<% } %>>Makeup</option>
+            <option value="2" <% if (p['Id_category'] === 2) { %>selected<% } %>>Skincare</option>
         </select>
         <button type="submit">Add product</button>
     </form>

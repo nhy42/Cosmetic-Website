@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Beauty & Co - Reviews</title>
+    <title>Beauty & Co - Cart</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/css/main.css">
@@ -24,22 +24,21 @@
             </tr>
         </thead>
         <tbody>
-        
+            <% for (let i = 0; i < cart.length; i++) {%>
             <tr>
-                <td>Product 1</td>
-                <td><img src="/img/makeup.jpg" alt="Product 1"></td>
-                <td class="centered-button"><input type="number" value="1" min="1"></td>
-                <td class="centered-button"><button><i class="fa-solid fa-trash"></i></button></td>
+                <td><%= cart[i]['name_product']%></td>
+                <td><img src="/img/products/<%= cart[i]['image'] %>"></td>
+                <td class="centered-button"><%= cart[i]['quantity'] %></td>
+                <td class="centered-button"><a href="/order/delete/<%= cart[i]['Id_Products'] %>"><i class="fa-solid fa-trash"></i></a></td>
             </tr>
-            
-            <tr>
-                <td>Product 2</td>
-                <td><img src="/img/makeup1.jpg" alt="Product 2"></td>
-                <td class="centered-button"><input type="number" value="1" min="1"></td>
-                <td class="centered-button"><button><i class="fa-solid fa-trash"></i></button></td>
-            </tr>
+            <% } %>
         </tbody>
     </table>
-
+<!-- Big checkout link-->
+<% if (cart.length !== 0) {%>
+    <div class="checkout">
+        <a href="/order/checkout">Checkout</a>
+    </div>
+<% } %>
 <%- include("./partials/footer.ejs") %>
 </body>

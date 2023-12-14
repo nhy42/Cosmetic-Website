@@ -54,6 +54,7 @@ router.post("/user/editaccount", checkAuthentication(["customer", "admin"]), asy
     }
 });
 
+/*
 router.post("/user/infos", checkAuthentication(["customer", "admin"]), async (req, res) => {
     let accID = req.user.id;
     let infos = await userRepo.getUserInfos(accID);
@@ -62,6 +63,6 @@ router.post("/user/infos", checkAuthentication(["customer", "admin"]), async (re
     } else {
         res.send(infos);
     }
-});
+});*/
 
 module.exports = router;

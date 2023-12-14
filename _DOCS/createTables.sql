@@ -2,9 +2,15 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 CREATE DATABASE IF NOT EXISTS `site_cosmetique` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 USE `site_cosmetique`;
 
+DROP TABLE IF EXISTS `Buy`;
 CREATE TABLE `Buy` (
   `Id_users` int NOT NULL,
   `Id_Products` int NOT NULL,
@@ -12,6 +18,21 @@ CREATE TABLE `Buy` (
   `quantity` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+INSERT INTO `Buy` (`Id_users`, `Id_Products`, `Id_Order`, `quantity`) VALUES
+(4, 1, 4, 1),
+(4, 2, 4, 1),
+(4, 3, 4, 1),
+(4, 4, 5, 1),
+(4, 5, 6, 1),
+(4, 6, 6, 2),
+(5, 1, 1, 2),
+(5, 2, 3, 1),
+(5, 7, 1, 1),
+(5, 9, 1, 1),
+(5, 10, 1, 2),
+(5, 10, 2, 1);
+
+DROP TABLE IF EXISTS `Category`;
 CREATE TABLE `Category` (
   `Id_category` int NOT NULL,
   `category_name` varchar(50) DEFAULT NULL
@@ -21,6 +42,7 @@ INSERT INTO `Category` (`Id_category`, `category_name`) VALUES
 (1, 'Women'),
 (2, 'Men');
 
+DROP TABLE IF EXISTS `Products`;
 CREATE TABLE `Products` (
   `Id_Products` int NOT NULL,
   `name_product` varchar(50) DEFAULT NULL,
@@ -45,6 +67,7 @@ INSERT INTO `Products` (`Id_Products`, `name_product`, `product_price`, `descrip
 (11, 'Hair conditionner', 19.99, 'A nourishing turmeric and coconut conditioner that helps detangle hair, tame frizz, leaving hair hydrated, easy to style and shiny.\r\n\r\nGOOD FOR VEGAN\r\nProducts without animal ingredients', 1, 'product11.jpg', 2),
 (12, 'Peel-off mask', 29.99, 'A peel-off blackhead mask that cleanses and purifies. From the first use, it refines the skin texture. \r\nEasy to apply, this peel-off mask is placed on the T-zone of the face (forehead, nose, chin) to target black spots. \r\nIt dries in just 20 minutes and is easily removed. This is the essential for smoother and clearer skin.\r\n\r\nThe little extra?\r\nThis tube is made of 39% recycled plastic. The case comes from sustainably managed forests and is decorated with plant-based inks.\r\n\r\nGood For Vegan \r\nProducts without animal ingredients *Good for vegans\r\n\r\n', 1, 'product12.jpg', 2);
 
+DROP TABLE IF EXISTS `Review`;
 CREATE TABLE `Review` (
   `Id_review` int NOT NULL,
   `product_quality` int DEFAULT NULL,
@@ -56,6 +79,14 @@ CREATE TABLE `Review` (
   `Id_Order` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+INSERT INTO `Review` (`Id_review`, `product_quality`, `delivery_quality`, `delivery_speed`, `customer_service`, `recommendation`, `Id_users`, `Id_Order`) VALUES
+(1, 4, 5, 4, 5, 3, 5, 1),
+(3, 1, 1, 1, 2, 1, 5, 2),
+(4, 5, 5, 5, 5, 5, 4, 4),
+(5, 2, 4, 3, 5, 2, 4, 5),
+(6, 4, 5, 3, 5, 4, 4, 6);
+
+DROP TABLE IF EXISTS `Users`;
 CREATE TABLE `Users` (
   `Id_users` int NOT NULL,
   `mail` varchar(50) DEFAULT NULL,
@@ -67,6 +98,14 @@ CREATE TABLE `Users` (
   `date_of_birth` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+INSERT INTO `Users` (`Id_users`, `mail`, `lastname`, `firstname`, `password`, `gender`, `user_type`, `date_of_birth`) VALUES
+(1, 'admin', 'Adminus', 'Maximus', '$2b$10$oX2SqCXhUOOxVUY32LKWD.WpLWZbtNxe/FiGhB9kfUXdjQvCrpRA.', 1, 'admin', '2000-01-01'),
+(2, 'noa@efrei.net', 'IHateYou', 'Noa', '$2b$10$thqh5BksZce1FZuQMOHXAuoO2SKoT6fBgC3q9sbCPBStJYEEGB33e', 1, 'admin', '2003-10-15'),
+(3, 'lea@efrei.net', 'Varing', 'Lea', '$2b$10$8zJIp4W0qng3JxQoYysTReAvlsP.pJOJ8WMsMHaILHjBIka0iuGCi', 1, 'admin', '2003-10-17'),
+(4, 'customer', 'customer', 'customer', '$2b$10$8e.9Ac3i.GkaJ99PacHNnuKfDS.dAnH8gwkO1yYfuW/NSHa98lpwq', 2, 'customer', '2002-01-01'),
+(5, 'customer2', 'customer2', 'customer2', '$2b$10$D0QbEUfS2KfwHo92H.qzSOCDf4hY1DE8qSSDTruWltguZ7i78JUqy', 2, 'customer', '2000-01-01');
+
+DROP TABLE IF EXISTS `Website_Order`;
 CREATE TABLE `Website_Order` (
   `Id_Order` int NOT NULL,
   `date_order` datetime DEFAULT NULL,
@@ -75,11 +114,23 @@ CREATE TABLE `Website_Order` (
   `rememember_card` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+INSERT INTO `Website_Order` (`Id_Order`, `date_order`, `delivery_adress`, `total_price`, `rememember_card`) VALUES
+(1, '2023-12-14 22:33:20', 'Default Address', NULL, 0),
+(2, '2023-12-14 22:33:50', 'Default Address', NULL, 0),
+(3, '2023-12-14 22:33:56', 'Default Address', NULL, 0),
+(4, '2023-12-14 22:40:04', 'Default Address', NULL, 0),
+(5, '2023-12-14 22:40:11', 'Default Address', NULL, 0),
+(6, '2023-12-14 22:40:22', 'Default Address', NULL, 0);
+
+DROP TABLE IF EXISTS `Wish`;
 CREATE TABLE `Wish` (
   `Id_users` int NOT NULL,
   `Id_Products` int NOT NULL,
   `quantity` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO `Wish` (`Id_users`, `Id_Products`, `quantity`) VALUES
+(5, 9, 153);
 
 
 ALTER TABLE `Buy`
@@ -96,8 +147,8 @@ ALTER TABLE `Products`
 
 ALTER TABLE `Review`
   ADD PRIMARY KEY (`Id_review`),
-  ADD UNIQUE KEY `Id_users` (`Id_users`),
-  ADD UNIQUE KEY `Id_Order` (`Id_Order`);
+  ADD UNIQUE KEY `Id_Order` (`Id_Order`),
+  ADD KEY `Id_users` (`Id_users`) USING BTREE;
 
 ALTER TABLE `Users`
   ADD PRIMARY KEY (`Id_users`),
@@ -115,16 +166,16 @@ ALTER TABLE `Category`
   MODIFY `Id_category` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 ALTER TABLE `Products`
-  MODIFY `Id_Products` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Id_Products` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 ALTER TABLE `Review`
-  MODIFY `Id_review` int NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_review` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 ALTER TABLE `Users`
-  MODIFY `Id_users` int NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_users` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 ALTER TABLE `Website_Order`
-  MODIFY `Id_Order` int NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Order` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 
 ALTER TABLE `Buy`
@@ -143,7 +194,3 @@ ALTER TABLE `Wish`
   ADD CONSTRAINT `Wish_ibfk_1` FOREIGN KEY (`Id_users`) REFERENCES `Users` (`Id_users`),
   ADD CONSTRAINT `Wish_ibfk_2` FOREIGN KEY (`Id_Products`) REFERENCES `Products` (`Id_Products`);
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

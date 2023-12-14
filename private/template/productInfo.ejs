@@ -17,11 +17,14 @@
             <p style="white-space: pre-line"><%= prod['description'] %></p>
             <span class="prix"><%= prod['product_price'] %> euros</span>
             <br>
-            <div class="quantité">
-                <span>Quantity</span>
-                <input type="number" min="1" value="1">
-            </div>
-            <a href="#" class="panier">Add into your basket</a>
+            <form method="post" action="/order/addToCart">
+                <input type="hidden" name="productID" value="<%= prod['Id_Products'] %>">
+                <div class="quantité">
+                    <span>Quantity</span>
+                    <input name="quantity" type="number" min="1" value="1">
+                </div>
+                <input type="submit" class="panier" value="Add into your basket">
+            </form>
         </div>
     </div>
 </section>

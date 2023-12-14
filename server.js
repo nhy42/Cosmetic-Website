@@ -40,14 +40,6 @@ app.get("/about", (req, res) => {
     res.render(__dirname + "/private/template/about.ejs");
 });
 
-app.get("/cart", (req, res) => {
-    res.render(__dirname + "/private/template/cart.ejs");
-});
-
-app.get("/admin", (req, res) => {
-    res.render(__dirname + "/private/template/admin.ejs");
-});
-
 // server start
 app.listen(process.env.WEB_PORT, () => {
     // todo: init db if first use
@@ -59,3 +51,4 @@ app.use("/products", require("./private/controllers/products.route.js"));
 app.use("/review", require("./private/controllers/review.route.js"));
 app.use("/", require("./private/controllers/auth.route.js"));
 app.use("/stats", require("./private/controllers/stats.route.js"));
+app.use("/", require("./private/controllers/order.route.js"));
