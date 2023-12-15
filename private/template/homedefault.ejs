@@ -22,16 +22,30 @@
     </section>
     <h1>Our Best Sellers ! </h1>
     <section class='produit'>
-        <% for (let i = 0; i < pList.length; i++) {%>
-            <div class='produit-liste'>
-                <img src="/img/products/<%= pList[i].image %>">
-                <div class='produit-texte'>
-                    <strong><%= pList[i].name %></strong>
-                    <span><% if (pList[i].cat === 1) {%>Makeup<%} else {%>Beauty<%}%></span>
-                    <a href="/products/<% if (pList[i].cat === 1) {%>woman<%} else {%>man<%}%>/<%= pList[i]['id'] %>"> See </a>
-                </div>
+        <div class='produit-liste'>
+            <img src="/img/products/product1.jpg">
+            <div class='produit-texte'>
+                <strong>Dyed powder</strong>
+                <span>Makeup</span>
+                <a href="/products/woman/1"> See </a>
             </div>
-        <% } %>
+        </div>
+        <div class='produit-liste'>
+            <img src="/img/products/product2.jpg">
+            <div class='produit-texte'>
+                <strong>Lipstick</strong>
+                <span>Makeup</span>
+                <a href="/products/woman/2"> See </a>
+            </div>
+        </div>
+        <div class='produit-liste'>
+            <img src="/img/products/product11.jpg">
+            <div class='produit-texte'>
+                <strong>Hair conditionner for men </strong>
+                <span>Beauty</span>
+                <a href="/products/man/11"> See </a>
+            </div>
+        </div>
     </section>
     <%- include('./partials/footer') %>
 </body>

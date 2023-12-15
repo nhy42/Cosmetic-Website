@@ -1,0 +1,46 @@
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+.cartTable {
+    width: 100%;
+    border-collapse: collapse;
+   
+}
+
+.cartTable th,
+.cartTable td {
+    padding: 10px;
+    border: 1px solid #af7245db;
+}
+
+.cartTable th {
+    font-weight: bold;
+    background-color: #af7245db;
+    color: white;
+}
+
+td > img {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.centered-button {
+    text-align: center;
+}
+
+.centered-button button {
+    display: block;
+    margin: 0 auto;
+}
+
+

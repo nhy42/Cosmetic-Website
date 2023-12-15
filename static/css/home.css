@@ -1,0 +1,35 @@
+.produit {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end; 
+}
+
+.produit-liste {
+    flex: 0 0 200px; 
+    margin-bottom: 20px;
+}
+
+.produit-liste img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px; 
+}
+
+.produit-liste:hover img {
+    opacity: 0.8;
+    transition: opacity 0.3s;
+    cursor: pointer;
+}
+
+.produit-liste .produit-texte {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 0 0 5px 5px; 
+    color: black;
+    text-align: center;
+}
+
+.produit-liste .produit-texte strong,
+.produit-liste .produit-texte span {
+    display: block;
+}

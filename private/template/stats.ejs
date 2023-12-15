@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Stats panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/stats.css">
+</head>
+<body>
+<%- include("./partials/topbar.ejs") %>
+<div class="main">
+    <div class="leftContainer" style="justify-content: center">
+
+    </div>
+    <div class="rightContainer">
+        <h1>Statistiques</h1>
+        <div class="statsContainer">
+            <div class="statsRow">
+                <div class="statItem" id="usersCount">
+                    <div class="statValue">Waiting...</div>
+                    <div class="statContent">Users</div>
+                </div>
+                <div class="statItem" id="orderCount">
+                    <div class="statValue">Waiting...</div>
+                    <div class="statContent">Orders</div>
+                </div>
+            </div>
+            <div class="statsRow">
+                <div class="statItem" id="reviewsCount">
+                    <div class="statValue">Waiting...</div>
+                    <div class="statContent">Reviews</div>
+                </div>
+                <div class="statItem" id="productsCount">
+                    <div class="statValue">Waiting...</div>
+                    <div class="statContent">Products</div>
+                </div>
+            </div>
+            <div class="statsRow">
+                <div class="statItem" id="mostBought">
+                    <div class="statValue">Waiting...</div>
+                    <div class="statContent">Most bought</div>
+                </div>
+                <div class="statItem" id="moneyMade">
+                    <div class="statValue">Waiting...</div>
+                    <div class="statContent">Full money made</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include("./partials/footer.ejs") %>
+<script src="/js/stats.js"></script>
+</body>
+</html>

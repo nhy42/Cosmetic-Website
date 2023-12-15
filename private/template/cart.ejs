@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Beauty & Co - Cart</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/cart.css">
+    <script src="/js/review.js"></script>
+
+</head>
+<body>
+<%- include("./partials/topbar.ejs") %>
+
+    <h1>Your Shopping Cart</h1>
+    
+    <table class = "cartTable">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Image</th>
+                <th>Quantity</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (let i = 0; i < cart.length; i++) {%>
+            <tr>
+                <td><%= cart[i]['name_product']%></td>
+                <td><img src="/img/products/<%= cart[i]['image'] %>"></td>
+                <td class="centered-button"><%= cart[i]['quantity'] %></td>
+                <td class="centered-button"><a href="/order/delete/<%= cart[i]['Id_Products'] %>"><i class="fa-solid fa-trash"></i></a></td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+<!-- Big checkout link-->
+<% if (cart.length !== 0) {%>
+    <div class="checkout">
+        <a href="/order/checkout">Checkout</a>
+    </div>
+<% } %>
+<%- include("./partials/footer.ejs") %>
+</body>

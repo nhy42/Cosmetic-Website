@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Beauty & Co - Customer Account</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/user.css">
+</head>
+<body>
+<%- include("./partials/topbar.ejs") %>
+
+<div class="container">
+    <h1>Login</h1>
+    <form action="/login" method="post">
+        <input type="text" id="Email" name="mail" required placeholder="E-mail">
+        <input type="password" id="password" name="password" required placeholder="Password">
+        <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account yet?</p>
+        <a href="/register">Create an account</a>
+</div>
+
+<%- include("./partials/footer.ejs") %>
+</body>
+</html>

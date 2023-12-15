@@ -20,18 +20,23 @@ Deadlines:
 
 Sitemap: 
 
-/
+- /
+- /products/woman
+- /products/man
+- /products/man/<int> : Describe the product having the ID <int>
+- /products/woman/<int> : Describe the product having the ID <int>
+- /reviews
+- /contact
+- /about
 
-/products/woman
+.env template :
 
-/products/man
+DB_HOST=
 
-/products/man/<int> : Describe the product having the ID <int>
+DB_USER=
 
-/products/woman/<int> : Describe the product having the ID <int>
+DB_PASS=
 
-/reviews
+DB_DATABASE=
 
-/contact
-
-/about
+WEB_PORT=8080

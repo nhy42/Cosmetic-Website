@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Beauty & Co - Products</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/makeup_W.css">
+</head>
+<body>
+<%- include("./partials/topbar.ejs") %>
+<section class='achat'>
+    <div class='achat-liste'>
+        <img src="/img/products/<%= prod['image'] %>">
+        <div class='achat-texte'>
+            <strong><%= prod['name_product'] %></strong>
+            <p style="white-space: pre-line"><%= prod['description'] %></p>
+            <span class="prix"><%= prod['product_price'] %> euros</span>
+            <br>
+            <form method="post" action="/order/addToCart">
+                <input type="hidden" name="productID" value="<%= prod['Id_Products'] %>">
+                <div class="quantité">
+                    <span>Quantity</span>
+                    <input name="quantity" type="number" min="1" value="1">
+                </div>
+                <input type="submit" class="panier" value="Add into your basket">
+            </form>
+        </div>
+    </div>
+</section>
+<%- include("./partials/footer.ejs") %>
+</body>
+</html>

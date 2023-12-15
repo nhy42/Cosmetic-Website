@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Beauty & Co - Products</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/admin-product-list.css">
+</head>
+<body>
+<%- include("./partials/topbar.ejs") %>
+<table class="reviewTable" id="table_id">
+    <thead>
+    <tr>
+        <th>Order number</th>
+        <th>Delivery</th>
+        <th>Quality</th>
+        <th>Customer service</th>
+        <th>Speed</th>
+        <th>Recommendation</th>
+        <% if (!admin) {%>
+        <th>Edit</th>
+        <th>Delete</th>
+        <% } %>
+    </tr>
+    </thead>
+    <% for (let i = 0; i < rList.length; i++) {%>
+        <tr>
+            <td><%= rList[i]['Id_Order']%></td>
+            <td><%= rList[i]['delivery_quality']%></td>
+            <td><%= rList[i]['product_quality']%></td>
+            <td><%= rList[i]['customer_service']%></td>
+            <td><%= rList[i]['delivery_speed']%></td>
+            <td><%= rList[i]['recommendation']%></td>
+            <% if (!admin) {%>
+            <td><a href="/review/edit/<%= rList[i]['Id_review']%>">Edit</a></td>
+            <td>
+                <form action="/review/delete" method="post">
+                    <input type="hidden" name="review_id" value="<%= rList[i]['Id_review']%>">
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+            <% } %>
+        </tr>
+    <% } %>
+
+</table>
+<%- include("./partials/footer.ejs") %>
+</body>
+</html>
+

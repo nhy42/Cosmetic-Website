@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Beauty & Co - Checkout</title>
+    <meta charset="UTF-8">
+    <link rel = "stylesheet" href ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel= "stylesheet" href="/css/main.css">
+    <link rel= "stylesheet" href="/css/about.css">
+</head>
+<body>
+<%- include('./partials/topbar.ejs')%>
+<section>
+    <h1> Thanks for your order! </h1><br>
+    <p> Your order number is the n°<%= orderNum %></p>
+    <script>
+        setTimeout(function(){
+            window.location.href = "/";
+        }, 5000);
+    </script>
+</section>
+<%- include('./partials/footer.ejs')%>
+</body>
+</html>
