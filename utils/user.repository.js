@@ -3,16 +3,6 @@ const bcrypt = require('bcrypt');
 
 
 module.exports = {
-    getBlankUser () { // defines the entity model
-        return {
-            "Id_user": 0,
-            "firstname": "XXXX",
-            "lastname": "XXXX",
-            "password": "XXXX",
-            "gender": "XXXX",
-            "date_of_birth": 0
-        };
-    },
     async createNewUser (mail, firstname, lastname, password, gender, date_of_birth) {
         try {
             password = await bcrypt.hash(password, 10);

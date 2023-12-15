@@ -81,8 +81,6 @@ module.exports = {
         }
     },
     async getStats() {
-        // get usersCount, productsCount, orderCount, reviewsCount,
-        // mostBoughtProduct, totalMoneySpent
         try {
             let usersCount = await this.getUserCount();
             let productsCount = await this.getProductCount();
